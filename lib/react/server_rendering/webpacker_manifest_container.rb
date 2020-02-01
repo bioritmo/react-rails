@@ -47,6 +47,8 @@ module React
             dev_server_asset = open("#{ds.protocol}://#{ds.host_with_port}#{asset_path}").read
             dev_server_asset.sub!(CLIENT_REQUIRE, '//\0')
             dev_server_asset
+          elsif asset_path.start_with?('http')
+            open(asset_path).read
           else
             File.read(file_path(logical_path))
           end
