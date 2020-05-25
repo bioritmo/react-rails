@@ -114,6 +114,12 @@ $ rails g react:component my_subdirectory/HelloWorld greeting:string
 ```
 Note: Your component is added to `app/javascript/components/` by default.
 
+Note: If your component is in a subdirectory you will append the directory path to your erb component call.
+
+Example: 
+```
+<%= react_component("my_subdirectory/HelloWorld", { greeting: "Hello from react-rails." }) %>
+```
 
 ##### 7) [Render it in a Rails view](#view-helper):
 
@@ -172,7 +178,10 @@ $ bundle exec rails webpacker:install:typescript
 $ yarn add @types/react @types/react-dom
 ```
 
-Doing this will allow React-Rails to support the .tsx extension.
+Doing this will allow React-Rails to support the .tsx extension. Additionally, it is recommended to add `ts` and `tsx` to the `server_renderer_extensions` in your application configuration:
+```
+config.react.server_renderer_extensions = ["jsx", "js", "tsx", "ts"]
+```
 
 ### Test component
 
@@ -690,11 +699,11 @@ One caveat is that currently you [cannot Server-Side Render along with HMR](http
 ## Related Projects
 
 - [webpacker-react](https://github.com/renchap/webpacker-react): Integration of React with Rails utilizing Webpack with Hot Module Replacement (HMR).
-- [The Free React on Rails Course](https://learnetto.com/users/hrishio/courses/the-free-react-on-rails-5-course) A free video course which teaches the basics of React and how to get started using it in Rails with `react-rails`.
+- [The React on Rails Course](https://learnetto.com/users/hrishio/courses/the-free-react-on-rails-5-course) A video course which teaches the basics of React and how to get started using it in Rails with `react-rails`.
 - [react\_on\_rails](https://github.com/shakacode/react_on_rails): Integration of React with Rails utilizing Webpack, Redux, React-Router.
 - [react-rails-hot-loader](https://github.com/rmosolgo/react-rails-hot-loader) Simple live-reloader for `react-rails`.
 - [react-rails-benchmark_renderer](https://github.com/pboling/react-rails-benchmark_renderer) adds performance instrumentation to server rendering.
-- [Ruby Hyperloop](http://ruby-hyperloop.org/): Use Ruby to build reactive user interfaces with React.
+- [Ruby Hyperstack](https://hyperstack.org/): Use Ruby to build reactive user interfaces with React.
 
 ## Contributing
 
